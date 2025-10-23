@@ -4,29 +4,31 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
 
 //Crear esquema (estructura de cada documento de tipo proyecto)
-const ProjectSchema = Schema({
-    name:{
-        type: String,
-        required: true,
-        trim: true
+const Book = sequelize.define('Book', {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
-    description:{
-        type: String,
-        required: true
-    }, 
-    state:{
-        type: String,
-        required: true
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
-    image:{
-        type: String,
-        default:"default.png"
-    }, 
-    created_at:{
-        type: Date,
-        default: Date.now
-    } 
+    state: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    image: {
+        type: DataTypes.STRING,
+        defaultValue: 'default.png',
+    },
+    created_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+    }
+}, {
+    tableName: 'books', // Nombre de la tabla en la base de datos
+    timestamps: false    // Para que no cree createdAt y updatedAt automáticamente
 });
 //Crear el modelo, indicarle la coleccion donde se van a guardar los documentoss
 //exportar el modelo
-module.exports = model("Project",ProjectSchema,"projects")
+module.exports = Book;

@@ -3,8 +3,6 @@ const connection = require("./database/connection");
 const express = require("express");
 const cors = require("cors");
 
-//Bloque 2:
-connection();
 
 //Bloque 3:
 const app = express();
@@ -18,8 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 //Bloque 6:
-const bibliotecaRoutes = require("./routes/biblioteca");
-app.use('/api/biblioteca', bibliotecaRoutes);
+const bibliotecaRoutes = require("./routes/libro");
+// app.use('/api/biblioteca', bibliotecaRoutes);
 
 //Bloque 7:
 app.listen(port, ()=>{
