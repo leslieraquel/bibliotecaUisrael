@@ -1,5 +1,5 @@
-const sequelize = require('./database/connection');
-
+//const sequelize = require('./database/connection');
+const sequelize = require('./connection');
 (async () => {
   try {
     await sequelize.authenticate();
