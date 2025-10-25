@@ -1,0 +1,11 @@
+const { DataTypes } = require('sequelize');
+const sequelize = require('../database/connection');
+
+const Estudiante = sequelize.define('Estudiante', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  nombre: { type: DataTypes.STRING(150), allowNull: false },
+  correo: { type: DataTypes.STRING(150), allowNull: true, unique: true },
+  carrera: { type: DataTypes.STRING(100), allowNull: true }
+}, { tableName: 'estudiantes' });
+
+module.exports = Estudiante;

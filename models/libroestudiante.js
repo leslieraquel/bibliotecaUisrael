@@ -1,32 +1,13 @@
+const { DataTypes } = require('sequelize');
+const sequelize = require('../database/connection');
 
-module.exports = (sequelize, DataTypes) => {
-    const LibroEstudiantes = sequelize.define('LibroEstudiantes', {
-        id: {
-            type: DataTypes.INTEGER, 
-            primaryKey: true,
-            autoIncrement: true
-        },
-        // Claves Foráneas de la relación M:M
-        libroId: {
-            type: DataTypes.INTEGER, 
-            allowNull: false
-        }, 
-        estudianteId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }, 
-        fechaPrestamo: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW
-        },
-        fechaDevolucion: {
-            type: DataTypes.DATE,
-            allowNull: true
-        }
-    }, {
-        tableName: 'libro_estudiantes',
-        timestamps: false
-    });
+const LibroEstudiante = sequelize.define('LibroEstudiante', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  libroId: { type: DataTypes.INTEGER, allowNull: false },
+  estudianteId: { type: DataTypes.INTEGER, allowNull: false },
+  fechaPrestamo: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
+  fechaDevolucion: { type: DataTypes.DATE, allowNull: true },
+  estado: { type: DataTypes.STRING(50), allowNull: false, defaultValue: 'prestado' } // prestado, devuelto, retrasado...
+}, { tableName: 'libro_estudiantes' });
 
-    return LibroEstudiantes;
-};
+module.exports = LibroEstudiante;
