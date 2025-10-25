@@ -15,10 +15,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-//Bloque 6:
-const bibliotecaRoutes = require("./routes/libro");
-// app.use('/api/biblioteca', bibliotecaRoutes);
+//Bloque 6:// Importar rutas
+const autorRoutes = require("./routes/autor");
+const libroRoutes = require("./routes/libro");
+const estudianteRoutes = require("./routes/estudiante");
+const libroEstudianteRoutes = require("./routes/libroestudiante");
 
+// Usar rutas
+app.use("/api/autores", autorRoutes);
+app.use("/api/libros", libroRoutes);
+app.use("/api/estudiantes", estudianteRoutes);
+app.use("/api/registros", libroEstudianteRoutes);
 //Bloque 7:
 app.listen(port, ()=>{
     console.log("Servidor esta corriendo correctamente en el puerto: "+port);
