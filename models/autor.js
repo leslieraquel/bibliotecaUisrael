@@ -7,4 +7,9 @@ const Autor = sequelize.define('Autor', {
   bio: { type: DataTypes.TEXT }
 }, { tableName: 'autores', timestamps: false });
 
+Autor.associate = (models) => {
+    Autor.hasMany(models.Libro, { foreignKey: 'autorId', as: 'libros' });
+ };
+
+
 module.exports = Autor;

@@ -8,4 +8,8 @@ const Estudiante = sequelize.define('Estudiante', {
   carrera: { type: DataTypes.STRING(100), allowNull: true }
 }, { tableName: 'estudiantes' });
 
+Autor.associate = (models) => {
+    Autor.hasMany(models.Libro, { foreignKey: 'autorId', as: 'libros' });
+  };
+
 module.exports = Estudiante;

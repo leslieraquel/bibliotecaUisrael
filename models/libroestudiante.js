@@ -10,4 +10,13 @@ const LibroEstudiante = sequelize.define('LibroEstudiante', {
   estado: { type: DataTypes.STRING(50), allowNull: false, defaultValue: 'prestado' } // prestado, devuelto, retrasado...
 }, { tableName: 'libro_estudiantes' });
 
+
+  Libro.associate = (models) => {
+    Libro.belongsTo(models.Autor, {
+      foreignKey: 'autorId',
+      as: 'autor'
+    });
+  };
+
+
 module.exports = LibroEstudiante;

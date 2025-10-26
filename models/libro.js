@@ -10,5 +10,14 @@ const Libro = sequelize.define('Libro', {
   autorId: { type: DataTypes.INTEGER, allowNull: false } // FK a Autor
 }, { tableName: 'libros' });
 
+
+  Libro.associate = (models) => {
+    Libro.belongsTo(models.Autor, {
+      foreignKey: 'autorId',
+      as: 'autor'
+    });
+  };
+
+
 module.exports = Libro;
 
