@@ -31,8 +31,8 @@ const listar = async (req, res) => {
   try {
     const registros = await LibroEstudiante.findAll({
       include: [
-        { model: Libro, as: 'libro', attributes: ['id','titulo'] },
-        { model: Estudiante, as: 'estudiante', attributes: ['id','nombre'] }
+        { model: Libro, as: 'libro', attributes: ['idlibros','titulo'] },
+        { model: Estudiante, as: 'estudiante', attributes: ['idestudiantes','nombre'] }
       ],
       order: [['fechaPrestamo','DESC']]
     });

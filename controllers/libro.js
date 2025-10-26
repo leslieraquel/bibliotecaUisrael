@@ -22,7 +22,7 @@ const crear = async (req, res) => {
 const listar = async (req, res) => {
   try {
     const libros = await Libro.findAll({
-      include: [{ model: Autor, as: 'autor', attributes: ['id','nombre'] }]
+      include: [{ model: Autor, as: 'autor', attributes: ['idautores','nombre'] }]
     });
     res.json(libros);
   } catch (err) {
