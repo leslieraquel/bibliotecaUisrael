@@ -11,10 +11,17 @@ const LibroEstudiante = sequelize.define('LibroEstudiante', {
 }, { tableName: 'libro_estudiantes' });
 
 
-  Libro.associate = (models) => {
-    Libro.belongsTo(models.Autor, {
-      foreignKey: 'autorId',
-      as: 'autor'
+ LibroEstudiante.associate = (models) => {
+    // Cada registro pertenece a un libro
+    LibroEstudiante.belongsTo(models.Libro, {
+      foreignKey: 'libroId',
+      as: 'libro'
+    });
+
+    // Cada registro pertenece a un estudiante
+    LibroEstudiante.belongsTo(models.Estudiante, {
+      foreignKey: 'estudianteId',
+      as: 'estudiante'
     });
   };
 
